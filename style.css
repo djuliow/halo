@@ -1,0 +1,254 @@
+/* Default styling - untuk layar besar */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "sidenav header"
+        "sidenav main"
+        "sidenav footer";
+    height: 100vh;
+}
+
+.header {
+    grid-area: header;
+    background-color: #7da1ab;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    color: #fff;
+}
+
+.sidenav {
+    grid-area: sidenav;
+    background-color: #2b2e4a;
+    color: white;
+    padding-top: 70px;
+    padding-left: 40px;
+}
+
+.sidenav__list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidenav__list-item {
+    margin: 2rem 0;
+    cursor: pointer;
+}
+
+.main {
+    grid-area: main;
+    padding: 1rem;
+    background-color: #88c8c8;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #ccc;
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    height: 180px;
+}
+
+.main-overview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 1rem;
+}
+
+.overviewcard {
+    background-color: #92b6d5;
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 150px;
+    min-height: 100px;
+}
+
+.overviewcard__icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.overviewcard__info h3 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.overviewcard__info p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+.overviewcard__stat {
+    font-size: 1.1rem;
+    color: #ffea00;
+    font-weight: bold;
+}
+
+.main-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 15px;
+}
+
+.card {
+    background-color: #68a0cf;
+    padding: 1rem;
+    border-radius: 4px;
+    color: #fff;
+    text-align: center;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.card__image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.card__title {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.card__description {
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 1rem;
+}
+
+.card__link {
+    color: #ffea00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card__link:hover {
+    text-decoration: underline;
+}
+
+/* Layout grid untuk main-cards */
+.main-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Membuat 3 kolom */
+    grid-template-areas: 
+        "left-card right-card right-card"; /* Menempatkan satu card di kiri dan dua card di kanan */
+    gap: 15px;
+}
+
+/* Menyesuaikan card kiri */
+.left-card {
+    grid-column: 1 / 2; /* Menempatkan card pertama di kolom pertama */
+}
+
+/* Menyesuaikan card kanan */
+.right-card {
+    grid-column: 2 / 4
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #495c70;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    align-items: center;
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "main"
+            "footer";
+    }
+
+    .header {
+        padding: 1rem;
+    }
+
+    .sidenav {
+        position: absolute;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100vh;
+        transition: left 0.3s ease;
+        padding-top: 2rem;
+    }
+
+    .sidenav.open {
+        left: 0;
+    }
+
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+
+    .sidenav__list-item {
+        margin: 1rem 0;
+    }
+
+    .main-overview {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .main-cards {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .sidenav__list-item {
+        font-size: 0.9rem;
+    }
+}
